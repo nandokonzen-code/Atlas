@@ -1,0 +1,13 @@
+{
+  "name": "atlas-comercial-mvp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "MVP transparente para priorização de prospects com dados públicos ou sintéticos.",
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
