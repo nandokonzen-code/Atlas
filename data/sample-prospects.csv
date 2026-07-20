@@ -1,0 +1,5 @@
+prospect,territory_fit,new_prospect,segment_fit,public_sources,no_duplicate,strategic_fit,why_now,access,readiness,penalty,confidence,expected_result
+Empresa Alfa,true,true,true,true,true,28,25,16,15,0,alta,A
+Empresa Beta,true,true,true,true,true,22,19,12,12,0,media,B
+Empresa Gama,false,true,true,true,true,25,24,15,14,0,alta,excluded_out_of_territory
+Empresa Delta,true,false,true,true,true,26,22,17,13,0,alta,reroute_existing_relationship
