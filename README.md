@@ -18,6 +18,14 @@ Após a ativação do GitHub Pages:
 
 https://nandokonzen-code.github.io/Atlas/
 
+## Ativação gratuita do GitHub Pages
+
+1. Abrir [Settings → Pages](https://github.com/nandokonzen-code/Atlas/settings/pages).
+2. Em **Build and deployment → Source**, selecionar **Deploy from a branch**.
+3. Em **Branch**, escolher `main`, pasta `/(root)` e tocar em **Save**.
+
+O GitHub publicará automaticamente as atualizações da branch principal.
+
 ## Segurança dos dados
 
 Esta versão pública deve usar somente informações públicas, sintéticas ou anonimizadas.
