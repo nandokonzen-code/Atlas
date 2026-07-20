@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="MVP do priorizador de prospects do ATLAS Comercial.">
+    <meta name="robots" content="noindex,nofollow">
+    <title>ATLAS Comercial — Priorizador</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="hero">
+      <div class="shell hero-content">
+        <div>
+          <p class="brand">ATLAS COMERCIAL</p>
+          <h1>Priorize oportunidades com critérios claros.</h1>
+          <p class="hero-copy">Avalie elegibilidade, aderência, momento, acesso e prontidão. O resultado explica a nota e sugere a próxima ação.</p>
+        </div>
+        <div class="hero-mark" aria-hidden="true"><span>A</span></div>
+      </div>
+    </header>
+
+    <main class="shell main-grid">
+      <section class="workspace" aria-labelledby="form-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Avaliação</p>
+            <h2 id="form-title">Dados do prospect</h2>
+          </div>
+          <div class="demo-cases" aria-label="Carregar caso sintético">
+            <button type="button" data-case="alfa">Alfa</button>
+            <button type="button" data-case="beta">Beta</button>
+            <button type="button" data-case="gama">Gama</button>
+            <button type="button" data-case="delta">Delta</button>
+          </div>
+        </div>
+
+        <form id="prioritizer-form">
+          <label class="field full-field">
+            <span>Nome ou identificador</span>
+            <input name="prospect" required maxlength="80" autocomplete="off">
+          </label>
+
+          <fieldset>
+            <legend>1. Portões de elegibilidade</legend>
+            <p class="field-help">Se um portão crítico falhar, o prospect é excluído, pausado ou redirecionado antes da pontuação.</p>
+            <div class="checks">
+              <label><input type="checkbox" name="territoryFit"><span>Está no território definido</span></label>
+              <label><input type="checkbox" name="newProspect"><span>É uma prospecção nova</span></label>
+              <label><input type="checkbox" name="segmentFit"><span>Segmento ou porte está no escopo</span></label>
+              <label><input type="checkbox" name="publicSources"><span>Usa apenas fontes públicas, sintéticas ou anonimizadas</span></label>
+              <label><input type="checkbox" name="noDuplicate"><span>Não existe iniciativa comercial duplicada</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>2. Pontuação</legend>
+            <p class="field-help">A soma máxima é 100 pontos. Use as evidências disponíveis e registre hipóteses como hipóteses.</p>
+            <div class="range-grid">
+              <label class="range-field">
+                <span><b>Aderência estratégica</b><output data-output="strategicFit">0</output>/30</span>
+                <input type="range" name="strategicFit" min="0" max="30" value="0">
+              </label>
+              <label class="range-field">
+                <span><b>Motivo para agir agora</b><output data-output="whyNow">0</output>/30</span>
+                <input type="range" name="whyNow" min="0" max="30" value="0">
+              </label>
+              <label class="range-field">
+                <span><b>Acesso</b><output data-output="access">0</output>/20</span>
+                <input type="range" name="access" min="0" max="20" value="0">
+              </label>
+              <label class="range-field">
+                <span><b>Prontidão comercial</b><output data-output="readiness">0</output>/20</span>
+                <input type="range" name="readiness" min="0" max="20" value="0">
+              </label>
+              <label class="range-field">
+                <span><b>Penalidades</b><output data-output="penalty">0</output> pontos</span>
+                <input type="range" name="penalty" min="0" max="25" value="0">
+              </label>
+              <label class="field">
+                <span>Confiança das evidências</span>
+                <select name="confidence">
+                  <option value="alta">Alta</option>
+                  <option value="media">Média</option>
+                  <option value="baixa">Baixa</option>
+                </select>
+              </label>
+            </div>
+          </fieldset>
+
+          <button class="primary-button" type="submit">Calcular prioridade</button>
+          <p class="privacy-note">Não insira dados confidenciais, credenciais, valores de propostas ou informações pessoais.</p>
+        </form>
+
+        <section class="csv-import" aria-labelledby="csv-title">
+          <div>
+            <p class="eyebrow">Análise em lote</p>
+            <h2 id="csv-title">Gerar ranking por CSV</h2>
+            <p>Carregue um arquivo de demonstração. O processamento acontece somente neste navegador.</p>
+          </div>
+          <div class="csv-actions">
+            <label class="file-button">
+              Selecionar CSV
+              <input id="csv-file" type="file" accept=".csv,text/csv">
+            </label>
+            <a href="data/sample-prospects.csv" download>Baixar modelo sintético</a>
+          </div>
+          <p id="bulk-status" class="field-help" aria-live="polite">Nenhum arquivo selecionado.</p>
+          <div id="ranking-wrap" class="table-wrap" hidden>
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Prospect</th>
+                  <th>Status</th>
+                  <th>Nota</th>
+                  <th>Faixa</th>
+                  <th>Confiança</th>
+                  <th>Próxima ação</th>
+                </tr>
+              </thead>
+              <tbody id="ranking-body"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <aside id="result-panel" class="result-panel" aria-live="polite" aria-label="Resultado da priorização"></aside>
+    </main>
+
+    <footer class="shell">
+      <p>MVP com dados processados somente no navegador. Toda ação externa exige revisão humana.</p>
+    </footer>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
