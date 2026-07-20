@@ -51,3 +51,5 @@ jobs:
       - name: Publicar página
         id: deployment
         uses: actions/deploy-pages@v4
+
+# Reexecução após ativação do GitHub Pages
