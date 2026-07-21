@@ -3,20 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="MVP do priorizador de prospects do ATLAS Comercial.">
+    <meta name="description" content="Demonstração pública segura do PRIORIZA Comercial para priorização de prospects e preparação de discovery consultivo.">
     <meta name="robots" content="noindex,nofollow">
-    <title>ATLAS Comercial — Priorizador</title>
+    <title>PRIORIZA Comercial — Priorização e Discovery</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <header class="hero">
       <div class="shell hero-content">
         <div>
-          <p class="brand">ATLAS COMERCIAL</p>
-          <h1>Priorize oportunidades com critérios claros.</h1>
-          <p class="hero-copy">Avalie elegibilidade, aderência, momento, acesso e prontidão. O resultado explica a nota e sugere a próxima ação.</p>
+          <p class="brand">PRIORIZA COMERCIAL</p>
+          <h1>Priorize oportunidades. Prepare conversas melhores.</h1>
+          <p class="hero-copy">Use critérios claros, evidências rastreáveis e revisão humana para transformar contexto em priorização e discovery consultivo.</p>
         </div>
-        <div class="hero-mark" aria-hidden="true"><span>A</span></div>
+        <div class="hero-mark" aria-hidden="true"><span>P</span></div>
       </div>
     </header>
 
@@ -24,8 +24,9 @@
       <section class="workspace" aria-labelledby="form-title">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">Avaliação</p>
+            <p class="eyebrow">1. Priorização</p>
             <h2 id="form-title">Dados do prospect</h2>
+            <p class="section-copy">Versão pública de demonstração. Use somente dados públicos, sintéticos ou anonimizados.</p>
           </div>
           <div class="demo-cases" aria-label="Carregar caso sintético">
             <button type="button" data-case="alfa">Alfa</button>
@@ -123,14 +124,109 @@
             </table>
           </div>
         </section>
+
+        <section id="discovery-builder" class="discovery-builder" aria-labelledby="discovery-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">2. Discovery consultivo</p>
+              <h2 id="discovery-title">Preparar roteiro de reunião</h2>
+              <p class="section-copy">Separe fatos de hipóteses, valide o contexto e gere uma pauta SPIN + BBE pronta para revisão humana.</p>
+            </div>
+            <div class="demo-cases">
+              <button type="button" id="load-discovery-demo">Caso sintético</button>
+            </div>
+          </div>
+
+          <form id="discovery-form">
+            <div class="input-grid">
+              <label class="field full-field">
+                <span>Prospect</span>
+                <input name="prospect" required maxlength="100" autocomplete="off">
+              </label>
+              <label class="field">
+                <span>Segmento</span>
+                <input name="segment" maxlength="100" autocomplete="off" placeholder="Ex.: Indústria">
+              </label>
+              <label class="field">
+                <span>Região</span>
+                <input name="region" maxlength="100" autocomplete="off" placeholder="Ex.: RS">
+              </label>
+              <label class="field">
+                <span>Tipo de conta</span>
+                <select name="accountType">
+                  <option value="">Não definido</option>
+                  <option value="RM">RM</option>
+                  <option value="Corporate">Corporate</option>
+                  <option value="Relacionamento existente">Relacionamento existente</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Objetivo da reunião</span>
+                <textarea name="meetingObjective" rows="3" maxlength="400" placeholder="O que precisamos entender ou validar?"></textarea>
+              </label>
+              <label class="field">
+                <span>Gatilho público observado</span>
+                <textarea name="trigger" rows="3" maxlength="400" placeholder="Ex.: expansão, nova planta, aquisição, mudança regulatória"></textarea>
+              </label>
+            </div>
+
+            <fieldset>
+              <legend>Fatos públicos e fontes</legend>
+              <p class="field-help">Uma observação sem fonte será mantida separada e nunca tratada como fato confirmado.</p>
+              <div class="fact-grid">
+                <label class="field">
+                  <span>Fato público 1</span>
+                  <textarea name="fact1" rows="3" maxlength="500"></textarea>
+                </label>
+                <label class="field">
+                  <span>Fonte 1</span>
+                  <input name="source1" maxlength="500" placeholder="URL, relatório público ou publicação">
+                </label>
+                <label class="field">
+                  <span>Fato público 2</span>
+                  <textarea name="fact2" rows="3" maxlength="500"></textarea>
+                </label>
+                <label class="field">
+                  <span>Fonte 2</span>
+                  <input name="source2" maxlength="500" placeholder="URL, relatório público ou publicação">
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Hipóteses de risco a validar</legend>
+              <p class="field-help">Use no máximo três hipóteses. Elas serão apresentadas como hipóteses, nunca como fatos.</p>
+              <div class="hypothesis-grid">
+                <label class="field"><span>Hipótese 1</span><textarea name="hypothesis1" rows="3" maxlength="500" required></textarea></label>
+                <label class="field"><span>Hipótese 2</span><textarea name="hypothesis2" rows="3" maxlength="500"></textarea></label>
+                <label class="field"><span>Hipótese 3</span><textarea name="hypothesis3" rows="3" maxlength="500"></textarea></label>
+              </div>
+            </fieldset>
+
+            <label class="field full-field commitment-field">
+              <span>Próximo compromisso desejado</span>
+              <textarea name="desiredNextCommitment" rows="3" maxlength="500" placeholder="Ex.: reunião técnica de 60 minutos para aprofundar duas exposições prioritárias"></textarea>
+            </label>
+
+            <label class="policy-check">
+              <input type="checkbox" name="sourcePolicyAccepted">
+              <span>Confirmo que usei somente dados públicos, sintéticos ou anonimizados e que nenhuma ação externa será feita sem revisão humana.</span>
+            </label>
+
+            <button class="primary-button" type="submit">Gerar roteiro de Discovery</button>
+          </form>
+
+          <section id="discovery-result" class="discovery-result" aria-live="polite" hidden></section>
+        </section>
       </section>
 
       <aside id="result-panel" class="result-panel" aria-live="polite" aria-label="Resultado da priorização"></aside>
     </main>
 
     <footer class="shell">
-      <p>MVP com dados processados somente no navegador. Toda ação externa exige revisão humana.</p>
+      <p>Demonstração pública do PRIORIZA Comercial. Os dados são processados somente no navegador e toda ação externa exige revisão humana.</p>
     </footer>
     <script type="module" src="app.js"></script>
+    <script type="module" src="discovery-ui.js"></script>
   </body>
 </html>
