@@ -1,34 +1,28 @@
-# ATLAS Comercial — Demonstração pública
+# PRIORIZA Comercial — Demonstração pública
 
-Demonstração do priorizador de prospects do ATLAS Comercial.
+Demonstração pública segura do PRIORIZA Comercial.
+
+> Observação: o repositório mantém temporariamente o slug legado `Atlas`, mas a identidade ativa da demonstração é **PRIORIZA Comercial**.
 
 ## Recursos
 
-- avaliação individual;
-- importação de CSV;
-- ranking de prospects;
+- avaliação individual de prospects;
 - portões de elegibilidade;
 - pontuação explicada de 0 a 100;
 - faixas de prioridade e próxima ação;
-- testes automatizados.
+- importação e ranking por CSV;
+- preparação de roteiro de Discovery consultivo;
+- perguntas SPIN + BBE;
+- separação entre fatos confirmados e hipóteses;
+- revisão humana obrigatória antes de qualquer ação externa.
 
 ## Acessar
 
-Após a ativação do GitHub Pages:
-
 https://nandokonzen-code.github.io/Atlas/
-
-## Ativação gratuita do GitHub Pages
-
-1. Abrir [Settings → Pages](https://github.com/nandokonzen-code/Atlas/settings/pages).
-2. Em **Build and deployment → Source**, selecionar **Deploy from a branch**.
-3. Em **Branch**, escolher `main`, pasta `/(root)` e tocar em **Save**.
-
-O GitHub publicará automaticamente as atualizações da branch principal.
 
 ## Segurança dos dados
 
-Esta versão pública deve usar somente informações públicas, sintéticas ou anonimizadas.
+Esta versão pública usa somente informações públicas, sintéticas ou anonimizadas.
 
 Não inserir:
 
@@ -36,9 +30,21 @@ Não inserir:
 - propostas, contratos ou valores confidenciais;
 - credenciais e chaves;
 - listas comerciais internas;
+- pipeline ou situação comercial interna;
 - documentos recebidos sob confidencialidade.
 
-O processamento ocorre somente no navegador e nenhuma avaliação é salva.
+O processamento ocorre somente no navegador e nenhuma avaliação é salva pela demonstração.
+
+## Arquitetura
+
+A versão pública é uma vitrine segura do método e não replica a camada privada de trabalho comercial.
+
+- `index.html` — interface pública do PRIORIZA;
+- `app.js` — priorização e ranking;
+- `src/prioritizer.js` — motor de pontuação;
+- `src/csv.js` — análise em lote;
+- `src/discovery.js` — geração de Discovery consultivo;
+- `discovery-ui.js` — interface do roteiro de Discovery.
 
 ## Executar localmente
 
