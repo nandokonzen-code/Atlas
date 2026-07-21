@@ -219,5 +219,26 @@ demoButtons.forEach((button) => {
   });
 });
 
-setForm(cases.alfa);
-renderResult(prioritizeProspect(readForm()));
+const params = new URLSearchParams(window.location.search);
+const radarProspect = params.get("prospect");
+
+if (radarProspect && params.get("radar") === "1") {
+  setForm({
+    prospect: radarProspect,
+    territoryFit: true,
+    newProspect: false,
+    segmentFit: false,
+    publicSources: true,
+    noDuplicate: false,
+    strategicFit: 0,
+    whyNow: 0,
+    access: 0,
+    readiness: 0,
+    penalty: 0,
+    confidence: "baixa",
+  });
+  resultPanel.hidden = true;
+} else {
+  setForm(cases.alfa);
+  renderResult(prioritizeProspect(readForm()));
+}
