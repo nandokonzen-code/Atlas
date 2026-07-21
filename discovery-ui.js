@@ -5,20 +5,20 @@ const result = document.querySelector("#discovery-result");
 const demoButton = document.querySelector("#load-discovery-demo");
 
 const demo = {
-  prospect: "Empresa Horizonte",
-  segment: "Indústria",
+  prospect: "Grupo Herval — cenário sintético",
+  segment: "Cenário demonstrativo",
   region: "RS",
-  accountType: "Corporate",
-  meetingObjective: "entender como a empresa está tratando riscos associados à expansão",
-  trigger: "anúncio público de expansão de capacidade",
-  fact1: "A empresa anunciou expansão de capacidade.",
-  source1: "Relatório público de demonstração",
-  fact2: "A companhia informou crescimento de sua presença regional.",
-  source2: "Comunicado público de demonstração",
-  hypothesis1: "A expansão pode alterar exposições operacionais e requisitos de continuidade.",
-  hypothesis2: "O crescimento regional pode aumentar interdependências logísticas.",
-  hypothesis3: "A arquitetura atual de proteção pode precisar ser revalidada diante do novo perfil operacional.",
-  desiredNextCommitment: "Agendar uma conversa técnica com os stakeholders relevantes para selecionar uma ou duas exposições prioritárias para aprofundamento.",
+  accountType: "",
+  meetingObjective: "demonstrar como estruturar uma conversa consultiva a partir de um cenário hipotético, sem usar dados comerciais internos",
+  trigger: "cenário sintético de expansão operacional",
+  fact1: "Exemplo sintético: a organização anunciou uma expansão operacional para fins desta demonstração.",
+  source1: "Dados sintéticos de demonstração — não representam fato sobre a empresa",
+  fact2: "Exemplo sintético: a operação passou a exigir revisão de prioridades e interdependências.",
+  source2: "Dados sintéticos de demonstração — não representam fato sobre a empresa",
+  hypothesis1: "Em um cenário de expansão, novas exposições operacionais e requisitos de continuidade poderiam precisar de validação.",
+  hypothesis2: "Mudanças de escala poderiam aumentar interdependências logísticas e operacionais.",
+  hypothesis3: "A arquitetura de proteção poderia precisar ser reavaliada caso o perfil operacional mudasse materialmente.",
+  desiredNextCommitment: "Agendar uma conversa técnica para validar uma ou duas hipóteses prioritárias antes de qualquer proposta.",
   sourcePolicyAccepted: true,
 };
 
