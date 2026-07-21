@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="PRIORIZA Radar — demonstração pública segura para organizar sinais públicos e encaminhá-los para priorização comercial.">
+    <meta name="robots" content="noindex,nofollow">
+    <title>PRIORIZA Radar</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      .radar-shell { padding-bottom: 48px; }
+      .radar-summary { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; margin:26px 0; }
+      .radar-kpi { padding:16px; border:1px solid var(--line); border-radius:14px; background:#f8fbfb; text-align:center; }
+      .radar-kpi span { display:block; color:var(--muted); font-size:.75rem; }
+      .radar-kpi strong { display:block; margin-top:4px; font-size:1.6rem; }
+      .radar-filters { display:grid; grid-template-columns:2fr 1fr 1fr; gap:14px; margin-top:30px; }
+      .radar-table-wrap { margin-top:18px; }
+      .back-link { display:inline-block; margin-top:18px; color:var(--green-dark); font-weight:800; }
+      .radar-note { margin:14px 0 0; padding:14px 16px; background:var(--mint); border-radius:14px; color:var(--green-dark); }
+      @media (max-width:900px) { .radar-summary { grid-template-columns:repeat(2,minmax(0,1fr)); } .radar-filters { grid-template-columns:1fr; } }
+      @media (max-width:620px) { .radar-summary { grid-template-columns:1fr; } }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="shell hero-content">
+        <div>
+          <p class="brand">PRIORIZA RADAR</p>
+          <h1>Encontre sinais. Organize hipóteses. Direcione o foco.</h1>
+          <p class="hero-copy">MVP público para registrar sinais rastreáveis e encaminhá-los à priorização com revisão humana.</p>
+          <a class="back-link" href="index.html">← Voltar ao PRIORIZA Comercial</a>
+        </div>
+        <div class="hero-mark" aria-hidden="true"><span>R</span></div>
+      </div>
+    </header>
+
+    <main class="shell main-grid radar-shell">
+      <section class="workspace">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">MVP público</p>
+            <h2>Registrar sinais comerciais públicos</h2>
+            <p class="section-copy">Território: RS, Oeste de SC e Litoral Sul de SC. Use somente informações públicas, sintéticas ou anonimizadas.</p>
+          </div>
+          <div class="demo-cases">
+            <button type="button" id="load-radar-demo">Carregar demonstração</button>
+          </div>
+        </div>
+
+        <div id="radar-summary" class="radar-summary" aria-label="Resumo do Radar"></div>
+
+        <form id="radar-form">
+          <div class="input-grid">
+            <label class="field">
+              <span>Empresa ou identificador público</span>
+              <input name="company" required maxlength="120" autocomplete="off" placeholder="Ex.: Grupo Herval">
+            </label>
+            <label class="field">
+              <span>Região</span>
+              <select name="region" required>
+                <option value="">Selecione</option>
+                <option value="RS">RS</option>
+                <option value="Oeste SC">Oeste SC</option>
+                <option value="Litoral Sul SC">Litoral Sul SC</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Tipo de conta</span>
+              <select name="accountType">
+                <option value="Não definido">Não definido</option>
+                <option value="RM">RM</option>
+                <option value="Corporate">Corporate</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Data do sinal</span>
+              <input name="observedAt" type="date" required>
+            </label>
+            <label class="field full-field">
+              <span>Gatilho público observado</span>
+              <textarea name="trigger" rows="3" maxlength="500" required placeholder="Ex.: expansão, investimento, aquisição, mudança de liderança ou mudança regulatória"></textarea>
+            </label>
+            <label class="field full-field">
+              <span>Fonte pública</span>
+              <input name="source" required maxlength="800" autocomplete="off" placeholder="URL, relatório público ou publicação rastreável">
+            </label>
+            <label class="field full-field">
+              <span>Hipótese comercial a validar</span>
+              <textarea name="hypothesis" rows="3" maxlength="600" required placeholder="Registre como hipótese, nunca como fato não confirmado."></textarea>
+            </label>
+          </div>
+
+          <label class="policy-check">
+            <input type="checkbox" name="sourcePolicyAccepted">
+            <span>Confirmo que usei somente dados públicos, sintéticos ou anonimizados. Não inseri status de cliente, pipeline, contatos pessoais ou informação comercial interna.</span>
+          </label>
+
+          <button class="primary-button" type="submit">Adicionar sinal ao Radar</button>
+          <p id="radar-status" class="field-help" aria-live="polite">Os sinais ficam somente na memória desta página e não são persistidos.</p>
+          <p class="radar-note"><strong>Fluxo:</strong> Radar → Priorização → Discovery. Os portões internos continuam exigindo validação humana.</p>
+        </form>
+
+        <form id="radar-filters" class="radar-filters">
+          <label class="field">
+            <span>Filtrar</span>
+            <input name="query" autocomplete="off" placeholder="Empresa, gatilho ou hipótese">
+          </label>
+          <label class="field">
+            <span>Região</span>
+            <select name="region">
+              <option value="">Todas</option>
+              <option value="RS">RS</option>
+              <option value="Oeste SC">Oeste SC</option>
+              <option value="Litoral Sul SC">Litoral Sul SC</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Tipo</span>
+            <select name="accountType">
+              <option value="">Todos</option>
+              <option value="RM">RM</option>
+              <option value="Corporate">Corporate</option>
+              <option value="Não definido">Não definido</option>
+            </select>
+          </label>
+        </form>
+
+        <div class="table-wrap radar-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Empresa</th>
+                <th>Região</th>
+                <th>Tipo</th>
+                <th>Gatilho</th>
+                <th>Data</th>
+                <th>Fonte</th>
+                <th>Hipótese</th>
+                <th>Próximo passo</th>
+              </tr>
+            </thead>
+            <tbody id="radar-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="shell">
+      <p>Versão pública de demonstração do PRIORIZA Radar. Toda ação externa exige revisão humana.</p>
+    </footer>
+    <script type="module" src="radar-ui.js"></script>
+  </body>
+</html>
