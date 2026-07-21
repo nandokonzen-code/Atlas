@@ -11,7 +11,7 @@ const bulkStatus = document.querySelector("#bulk-status");
 
 const cases = {
   alfa: {
-    prospect: "Empresa Alfa",
+    prospect: "Grupo Herval — simulação pública",
     territoryFit: true,
     newProspect: true,
     segmentFit: true,
@@ -25,7 +25,7 @@ const cases = {
     confidence: "alta",
   },
   beta: {
-    prospect: "Empresa Beta",
+    prospect: "3tentos — simulação pública",
     territoryFit: true,
     newProspect: true,
     segmentFit: true,
@@ -39,7 +39,7 @@ const cases = {
     confidence: "media",
   },
   gama: {
-    prospect: "Empresa Gama",
+    prospect: "Caso fora do território — simulação",
     territoryFit: false,
     newProspect: true,
     segmentFit: true,
@@ -53,7 +53,7 @@ const cases = {
     confidence: "alta",
   },
   delta: {
-    prospect: "Empresa Delta",
+    prospect: "Caso relacionamento existente — simulação",
     territoryFit: true,
     newProspect: false,
     segmentFit: true,
