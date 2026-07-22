@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Central de trabalho do PRIORIZA Comercial.">
+    <meta name="description" content="Central intuitiva de trabalho do PRIORIZA Comercial.">
     <meta name="robots" content="noindex,nofollow">
-    <title>PRIORIZA — Central de Trabalho</title>
+    <title>PRIORIZA — Central de Missões</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-      .hub-shell{padding:34px 0 56px}.hub-intro{margin-bottom:22px}.hub-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.hub-card{display:block;padding:22px;border:1px solid var(--line);border-radius:18px;background:#fff;color:inherit;text-decoration:none;box-shadow:0 8px 28px rgba(16,42,50,.07)}.hub-card:hover{transform:translateY(-1px)}.hub-card h2{margin:8px 0}.hub-card p{color:var(--muted);margin:0}.hub-status{display:inline-flex;padding:5px 9px;border-radius:999px;background:var(--mint);color:var(--green-dark);font-size:.75rem;font-weight:800}.hub-status.experimental{background:#fff4cc;color:#765b00}.hub-flow{margin-top:24px;padding:20px;border-radius:18px;background:#f8fbfb;border:1px solid var(--line)}.hub-flow strong{color:var(--green-dark)}.hub-footer-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.hub-footer-actions a{display:inline-block;text-decoration:none}.secondary-link{padding:12px 16px;border:1px solid var(--line);border-radius:12px;font-weight:800;color:var(--green-dark);background:#fff}@media(max-width:760px){.hub-grid{grid-template-columns:1fr}}
+      .mission-shell{padding:26px 0 58px}.mission-hero{display:grid;grid-template-columns:1.6fr 1fr;gap:18px;margin-bottom:18px}.mission-panel,.progress-panel{padding:22px;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:0 10px 30px rgba(16,42,50,.07)}.mission-panel{background:linear-gradient(135deg,#f8fbfb,#ddf4f3)}.mission-kicker{display:inline-flex;padding:6px 10px;border-radius:999px;background:#fff;color:var(--green-dark);font-size:.76rem;font-weight:900}.mission-title{margin:10px 0 6px;font-size:1.55rem}.mission-copy{margin:0;color:var(--muted)}.mission-cta{display:inline-block;margin-top:16px;text-decoration:none}.progress-row{display:flex;align-items:center;gap:8px;margin-top:14px}.progress-dot{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--line);font-weight:900;font-size:.8rem;background:#fff}.progress-dot.done{background:var(--green);border-color:var(--green);color:#fff}.progress-line{height:3px;flex:1;background:var(--line);border-radius:999px}.progress-label{font-size:.82rem;color:var(--muted);margin-top:10px}.mission-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:18px}.mission-card{position:relative;display:flex;flex-direction:column;min-height:230px;padding:20px;border:1px solid var(--line);border-radius:20px;background:#fff;color:inherit;text-decoration:none;box-shadow:0 8px 26px rgba(16,42,50,.06);transition:.18s ease}.mission-card:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(16,42,50,.1)}.mission-number{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:var(--mint);color:var(--green-dark);font-weight:900}.mission-card h2{font-size:1.15rem;margin:15px 0 8px}.mission-card p{margin:0;color:var(--muted);font-size:.92rem}.mission-action{margin-top:auto;padding-top:18px;font-weight:900;color:var(--green-dark)}.mission-badge{position:absolute;top:18px;right:18px;font-size:.68rem;font-weight:900;padding:5px 8px;border-radius:999px;background:#f1f5f6;color:var(--muted)}.mission-badge.active{background:var(--mint);color:var(--green-dark)}.quick-mode{margin-top:20px;padding:20px;border-radius:20px;background:#102a32;color:#fff}.quick-mode h2{margin:0 0 10px}.quick-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.quick-step{padding:14px;border-radius:14px;background:rgba(255,255,255,.08)}.quick-step strong{display:block;margin-bottom:4px}.quick-step span{font-size:.86rem;color:#d8e4e7}.privacy-note-box{margin-top:18px;padding:14px 16px;border-radius:14px;background:#f8fbfb;color:var(--muted);font-size:.84rem}@media(max-width:900px){.mission-hero{grid-template-columns:1fr}.mission-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.mission-grid,.quick-flow{grid-template-columns:1fr}.mission-card{min-height:auto}.progress-panel{display:none}}
     </style>
   </head>
   <body>
@@ -16,59 +16,100 @@
       <div class="shell hero-content">
         <div>
           <p class="brand">PRIORIZA</p>
-          <h1>Sua central de trabalho comercial.</h1>
-          <p class="hero-copy">Encontre sinais, organize contas, priorize esforço e prepare conversas melhores em um único fluxo.</p>
+          <h1>Uma missão de cada vez.</h1>
+          <p class="hero-copy">Escolha sua próxima ação e avance do sinal público até uma conversa comercial melhor.</p>
         </div>
         <div class="hero-mark" aria-hidden="true"><span>P</span></div>
       </div>
     </header>
 
-    <main class="shell hub-shell">
-      <section class="hub-intro">
-        <p class="eyebrow">Comece aqui</p>
-        <h2>Escolha o que você precisa fazer agora</h2>
+    <main class="shell mission-shell">
+      <section class="mission-hero">
+        <div class="mission-panel">
+          <span class="mission-kicker">SUA PRÓXIMA MISSÃO</span>
+          <h2 id="next-mission-title" class="mission-title">Carregar sua carteira de contas</h2>
+          <p id="next-mission-copy" class="mission-copy">Importe a base CSV para ter suas contas organizadas no celular e começar a priorizar.</p>
+          <a id="next-mission-link" class="primary-button mission-cta" href="contas.html">Começar agora →</a>
+        </div>
+        <div class="progress-panel">
+          <p class="eyebrow">Jornada comercial</p>
+          <h2>Do sinal à conversa</h2>
+          <div class="progress-row" aria-label="Progresso da jornada">
+            <span class="progress-dot done">1</span><span class="progress-line"></span>
+            <span class="progress-dot" id="progress-2">2</span><span class="progress-line"></span>
+            <span class="progress-dot">3</span><span class="progress-line"></span>
+            <span class="progress-dot">4</span>
+          </div>
+          <p id="progress-label" class="progress-label">Comece carregando sua carteira. Depois, avance conta por conta.</p>
+        </div>
       </section>
 
-      <section class="hub-grid" aria-label="Módulos do PRIORIZA">
-        <a class="hub-card" href="radar.html">
-          <span class="hub-status">ATIVO — MANUAL</span>
-          <h2>1. Radar</h2>
-          <p>Registrar um sinal público, documentar o gatilho e encaminhar a empresa para priorização.</p>
+      <section class="mission-grid" aria-label="Missões do PRIORIZA">
+        <a class="mission-card" href="radar.html">
+          <span class="mission-number">1</span><span class="mission-badge">SINAL</span>
+          <h2>Radar</h2>
+          <p>Vi uma notícia, investimento ou mudança importante. Quero registrar e transformar isso em oportunidade.</p>
+          <span class="mission-action">Registrar sinal →</span>
         </a>
 
-        <a class="hub-card" href="contas.html">
-          <span class="hub-status">ATIVO — LOCAL</span>
-          <h2>2. Carteira de Contas</h2>
-          <p>Importar sua base por CSV, filtrar território e prioridade e abrir qualquer conta no priorizador. Os dados ficam no seu navegador.</p>
+        <a class="mission-card" href="contas.html">
+          <span class="mission-number">2</span><span id="accounts-badge" class="mission-badge active">CARTEIRA</span>
+          <h2>Contas</h2>
+          <p>Quero ver meu universo de empresas, filtrar prioridades e escolher onde colocar energia agora.</p>
+          <span class="mission-action">Abrir carteira →</span>
         </a>
 
-        <a class="hub-card" href="index.html#form-title">
-          <span class="hub-status">ATIVO</span>
-          <h2>3. Priorizar</h2>
-          <p>Validar elegibilidade, pontuar aderência, motivo para agir, acesso e prontidão comercial.</p>
+        <a class="mission-card" href="index.html#form-title">
+          <span class="mission-number">3</span><span class="mission-badge">DECISÃO</span>
+          <h2>Priorizar</h2>
+          <p>Tenho uma empresa em mente e preciso decidir se ela merece foco comercial neste momento.</p>
+          <span class="mission-action">Calcular prioridade →</span>
         </a>
 
-        <a class="hub-card" href="index.html#discovery-builder">
-          <span class="hub-status">ATIVO</span>
-          <h2>4. Discovery</h2>
-          <p>Transformar fatos públicos e hipóteses em uma pauta consultiva estruturada para reunião.</p>
+        <a class="mission-card" href="index.html#discovery-builder">
+          <span class="mission-number">4</span><span class="mission-badge">CONVERSA</span>
+          <h2>Discovery</h2>
+          <p>Tenho uma reunião ou abordagem pela frente e quero preparar perguntas, hipóteses e próximo compromisso.</p>
+          <span class="mission-action">Preparar conversa →</span>
         </a>
       </section>
 
-      <section class="hub-flow">
-        <p class="eyebrow">Fluxo recomendado</p>
-        <p><strong>Radar</strong> → detecta o sinal. <strong>Carteira</strong> → organiza o universo de contas. <strong>Priorização</strong> → decide onde colocar esforço. <strong>Discovery</strong> → prepara a conversa.</p>
-        <p>A automação multi-fonte do Radar continua em validação; o restante do fluxo já pode ser usado hoje.</p>
+      <section class="quick-mode">
+        <h2>Modo rápido — use assim no dia a dia</h2>
+        <div class="quick-flow">
+          <div class="quick-step"><strong>1. Escolha uma conta</strong><span>Abra a carteira e filtre Prioridade A.</span></div>
+          <div class="quick-step"><strong>2. Tome uma decisão</strong><span>Priorize a empresa usando evidências e contexto.</span></div>
+          <div class="quick-step"><strong>3. Vá para a conversa</strong><span>Gere o Discovery e saia com um próximo passo claro.</span></div>
+        </div>
       </section>
 
-      <div class="hub-footer-actions">
-        <a class="primary-button" href="contas.html">Começar pela Carteira</a>
-        <a class="secondary-link" href="index.html">Abrir Priorização e Discovery</a>
-      </div>
+      <p class="privacy-note-box"><strong>Privacidade:</strong> use somente dados públicos, sintéticos ou anonimizados. A Carteira importada fica no armazenamento local do navegador.</p>
     </main>
 
-    <footer class="shell">
-      <p>PRIORIZA Comercial. Use apenas informações públicas, sintéticas ou anonimizadas. Dados importados na Carteira ficam somente no navegador do usuário.</p>
-    </footer>
+    <footer class="shell"><p>PRIORIZA Comercial — Radar → Contas → Priorização → Discovery.</p></footer>
+
+    <script>
+      (() => {
+        const key = "prioriza_accounts_v1";
+        let accounts = [];
+        try { accounts = JSON.parse(localStorage.getItem(key) || "[]"); } catch { accounts = []; }
+        const title = document.querySelector("#next-mission-title");
+        const copy = document.querySelector("#next-mission-copy");
+        const link = document.querySelector("#next-mission-link");
+        const badge = document.querySelector("#accounts-badge");
+        const progress2 = document.querySelector("#progress-2");
+        const progressLabel = document.querySelector("#progress-label");
+        if (Array.isArray(accounts) && accounts.length > 0) {
+          const priorityA = accounts.filter((item) => item.priority === "A").length;
+          title.textContent = "Escolher uma conta Prioridade A";
+          copy.textContent = `Sua carteira já tem ${accounts.length} conta(s), sendo ${priorityA} de prioridade A. Escolha uma delas e leve para priorização.`;
+          link.href = "contas.html";
+          link.textContent = "Escolher conta →";
+          badge.textContent = `${accounts.length} CONTAS`;
+          progress2.classList.add("done");
+          progressLabel.textContent = "Carteira carregada. Agora avance conta por conta: priorize e prepare o Discovery.";
+        }
+      })();
+    </script>
   </body>
 </html>
