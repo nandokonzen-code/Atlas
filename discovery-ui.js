@@ -164,6 +164,7 @@ function renderGuide(guide) {
     </div>
 
     <p class="review-note"><strong>Regra:</strong> revisar fatos, fontes, hipóteses e linguagem antes de qualquer reunião, mensagem ou ação externa.</p>
+    <div style="margin-top:16px"><a class="primary-button" style="display:inline-block;text-decoration:none" href="home.html">Missão concluída: voltar à Central →</a></div>
   `;
   result.scrollIntoView({ behavior: "smooth", block: "start" });
 }
@@ -177,3 +178,14 @@ demoButton.addEventListener("click", () => {
   setForm(demo);
   renderGuide(generateDiscoveryGuide(readForm()));
 });
+
+const params = new URLSearchParams(window.location.search);
+const prospect = params.get("prospect");
+if (prospect) {
+  setForm({
+    prospect,
+    segment: params.get("segment") || "",
+    region: params.get("region") || "",
+    accountType: params.get("accountType") || "",
+  });
+}
