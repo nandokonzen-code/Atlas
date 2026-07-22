@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Demonstração pública segura do PRIORIZA Comercial para priorização de prospects e preparação de discovery consultivo.">
+    <meta name="description" content="PRIORIZA Comercial para priorização de prospects e preparação de discovery consultivo com dados públicos e revisão humana.">
     <meta name="robots" content="noindex,nofollow">
     <title>PRIORIZA Comercial — Priorização e Discovery</title>
     <link rel="stylesheet" href="styles.css">
@@ -14,7 +14,7 @@
         <div>
           <p class="brand">PRIORIZA COMERCIAL</p>
           <h1>Priorize oportunidades. Prepare conversas melhores.</h1>
-          <p class="hero-copy">Use critérios claros, evidências rastreáveis e revisão humana para transformar contexto em priorização e discovery consultivo.</p>
+          <p class="hero-copy">Use sua carteira, sinais públicos e critérios claros para decidir onde colocar esforço e preparar uma conversa consultiva.</p>
         </div>
         <div class="hero-mark" aria-hidden="true"><span>P</span></div>
       </div>
@@ -26,13 +26,7 @@
           <div>
             <p class="eyebrow">1. Priorização</p>
             <h2 id="form-title">Dados do prospect</h2>
-            <p class="section-copy">Versão pública de demonstração. Nomes reais podem aparecer somente como exemplos públicos; os critérios e notas exibidos são sintéticos e não representam informação comercial real.</p>
-          </div>
-          <div class="demo-cases" aria-label="Carregar exemplo público ou cenário de demonstração">
-            <button type="button" data-case="alfa">Grupo Herval — simulação</button>
-            <button type="button" data-case="beta">3tentos — simulação</button>
-            <button type="button" data-case="gama">Fora do território</button>
-            <button type="button" data-case="delta">Relacionamento existente</button>
+            <p class="section-copy">Selecione uma conta da sua Carteira ou informe uma empresa. Use somente evidências públicas ou informações internas permitidas pela sua política corporativa.</p>
           </div>
         </div>
 
@@ -44,19 +38,19 @@
 
           <fieldset>
             <legend>1. Portões de elegibilidade</legend>
-            <p class="field-help">Se um portão crítico falhar, o prospect é excluído, pausado ou redirecionado antes da pontuação.</p>
+            <p class="field-help">Se um portão crítico falhar ou ainda não tiver sido validado, pause a pontuação e confirme antes de avançar.</p>
             <div class="checks">
               <label><input type="checkbox" name="territoryFit"><span>Está no território definido</span></label>
               <label><input type="checkbox" name="newProspect"><span>É uma prospecção nova</span></label>
               <label><input type="checkbox" name="segmentFit"><span>Segmento ou porte está no escopo</span></label>
-              <label><input type="checkbox" name="publicSources"><span>Usa apenas fontes públicas, sintéticas ou anonimizadas</span></label>
+              <label><input type="checkbox" name="publicSources"><span>As evidências usadas estão permitidas e rastreáveis</span></label>
               <label><input type="checkbox" name="noDuplicate"><span>Não existe iniciativa comercial duplicada</span></label>
             </div>
           </fieldset>
 
           <fieldset>
             <legend>2. Pontuação</legend>
-            <p class="field-help">A soma máxima é 100 pontos. Use as evidências disponíveis e registre hipóteses como hipóteses.</p>
+            <p class="field-help">A soma máxima é 100 pontos. Pontue apenas o que estiver sustentado por evidências ou validação humana.</p>
             <div class="range-grid">
               <label class="range-field">
                 <span><b>Aderência estratégica</b><output data-output="strategicFit">0</output>/30</span>
@@ -90,21 +84,21 @@
           </fieldset>
 
           <button class="primary-button" type="submit">Calcular prioridade</button>
-          <p class="privacy-note">Não insira dados confidenciais, credenciais, valores de propostas ou informações pessoais.</p>
+          <p class="privacy-note">Não insira credenciais, informações pessoais sensíveis ou dados que não estejam autorizados para uso nesta ferramenta.</p>
         </form>
 
         <section class="csv-import" aria-labelledby="csv-title">
           <div>
             <p class="eyebrow">Análise em lote</p>
             <h2 id="csv-title">Gerar ranking por CSV</h2>
-            <p>Carregue um arquivo de demonstração. O processamento acontece somente neste navegador.</p>
+            <p>Carregue um arquivo compatível. O processamento acontece somente neste navegador.</p>
           </div>
           <div class="csv-actions">
             <label class="file-button">
               Selecionar CSV
               <input id="csv-file" type="file" accept=".csv,text/csv">
             </label>
-            <a href="data/sample-prospects.csv" download>Baixar modelo de demonstração</a>
+            <a href="data/sample-prospects.csv" download>Baixar modelo de CSV</a>
           </div>
           <p id="bulk-status" class="field-help" aria-live="polite">Nenhum arquivo selecionado.</p>
           <div id="ranking-wrap" class="table-wrap" hidden>
@@ -130,10 +124,7 @@
             <div>
               <p class="eyebrow">2. Discovery consultivo</p>
               <h2 id="discovery-title">Preparar roteiro de reunião</h2>
-              <p class="section-copy">Separe fatos de hipóteses, valide o contexto e gere uma pauta SPIN + BBE pronta para revisão humana.</p>
-            </div>
-            <div class="demo-cases">
-              <button type="button" id="load-discovery-demo">Grupo Herval — cenário sintético</button>
+              <p class="section-copy">Trabalhe com a empresa selecionada. Separe fatos de hipóteses, valide o contexto e gere uma pauta SPIN + BBE para revisão humana.</p>
             </div>
           </div>
 
@@ -210,7 +201,7 @@
 
             <label class="policy-check">
               <input type="checkbox" name="sourcePolicyAccepted">
-              <span>Confirmo que usei somente dados públicos, sintéticos ou anonimizados e que nenhuma ação externa será feita sem revisão humana.</span>
+              <span>Confirmo que os dados usados estão autorizados para esta análise e que nenhuma ação externa será feita sem revisão humana.</span>
             </label>
 
             <button class="primary-button" type="submit">Gerar roteiro de Discovery</button>
@@ -224,9 +215,9 @@
     </main>
 
     <footer class="shell">
-      <p>Demonstração pública do PRIORIZA Comercial. Os dados são processados somente no navegador e toda ação externa exige revisão humana.</p>
+      <p>PRIORIZA Comercial. Os dados da interface são processados no navegador e toda ação externa exige revisão humana.</p>
     </footer>
-    <script type="module" src="app.js"></script>
-    <script type="module" src="discovery-ui.js"></script>
+    <script type="module" src="app.js?v=20260722-3"></script>
+    <script type="module" src="discovery-ui.js?v=20260722-3"></script>
   </body>
 </html>
