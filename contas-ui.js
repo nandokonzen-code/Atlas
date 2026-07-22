@@ -5,6 +5,9 @@ const status = document.querySelector("#accounts-status");
 const summary = document.querySelector("#accounts-summary");
 const filters = document.querySelector("#accounts-filters");
 const body = document.querySelector("#accounts-body");
+const cards = document.querySelector("#accounts-cards");
+const missionTitle = document.querySelector("#accounts-mission-title");
+const missionCopy = document.querySelector("#accounts-mission-copy");
 
 let accounts = loadAccounts();
 
@@ -133,6 +136,31 @@ function filteredAccounts() {
   });
 }
 
+function prioritizeUrl(account) {
+  return `index.html?radar=1&prospect=${encodeURIComponent(account.company)}#form-title`;
+}
+
+function discoveryUrl(account) {
+  const params = new URLSearchParams({ prospect: account.company });
+  if (account.sector) params.set("segment", account.sector);
+  if (account.territory) params.set("region", account.territory);
+  return `index.html?${params.toString()}#discovery-builder`;
+}
+
+function renderMission() {
+  if (!accounts.length) {
+    missionTitle.textContent = "Carregar a carteira";
+    missionCopy.textContent = "Importe sua base CSV. Depois escolha uma conta Prioridade A para levar à priorização.";
+    return;
+  }
+
+  const priorityA = accounts.filter((item) => item.priority === "A").length;
+  missionTitle.textContent = priorityA ? "Escolher uma conta Prioridade A" : "Escolher a próxima conta";
+  missionCopy.textContent = priorityA
+    ? `Você tem ${priorityA} conta(s) de prioridade A. Filtre por A, escolha uma empresa e avance para a decisão.`
+    : `Sua carteira tem ${accounts.length} conta(s). Escolha uma empresa e avance para a priorização.`;
+}
+
 function renderSummary() {
   const total = accounts.length;
   const a = accounts.filter((item) => item.priority === "A").length;
@@ -146,6 +174,35 @@ function renderSummary() {
   `;
 }
 
+function renderCards() {
+  if (!cards) return;
+  const list = filteredAccounts();
+  if (!list.length) {
+    cards.innerHTML = `<div class="account-card empty">${accounts.length ? "Nenhuma conta encontrada para os filtros atuais." : "Importe sua base CSV para começar."}</div>`;
+    return;
+  }
+
+  cards.innerHTML = list.map((account) => {
+    const revenue = account.revenue ? `R$ ${escapeHtml(account.revenue)} bi` : "Pendente";
+    return `<article class="account-card">
+      <div class="account-card-top">
+        <div><h3>${escapeHtml(account.company)}</h3></div>
+        <span class="account-pill">${escapeHtml(account.priority || "Sem prioridade")}</span>
+      </div>
+      <div class="account-meta">
+        <div><span>Território</span><strong>${escapeHtml(account.territory || "—")}</strong></div>
+        <div><span>Setor</span><strong>${escapeHtml(account.sector || "—")}</strong></div>
+        <div><span>Receita/Faturamento</span><strong>${revenue}</strong></div>
+        <div><span>Validação</span><strong>${escapeHtml(account.validation || "Pendente")}</strong></div>
+      </div>
+      <div class="account-next">
+        <a class="primary-button" href="${prioritizeUrl(account)}">Priorizar agora →</a>
+        <a class="secondary-action" href="${discoveryUrl(account)}">Preparar Discovery</a>
+      </div>
+    </article>`;
+  }).join("");
+}
+
 function renderTable() {
   const list = filteredAccounts();
   if (!list.length) {
@@ -155,7 +212,6 @@ function renderTable() {
 
   body.innerHTML = list.map((account) => {
     const revenue = account.revenue ? `R$ ${escapeHtml(account.revenue)} bi` : "—";
-    const url = `index.html?radar=1&prospect=${encodeURIComponent(account.company)}#form-title`;
     return `<tr>
       <td><strong>${escapeHtml(account.company)}</strong></td>
       <td>${escapeHtml(account.territory || "—")}</td>
@@ -163,13 +219,15 @@ function renderTable() {
       <td>${escapeHtml(account.priority || "—")}</td>
       <td>${revenue}</td>
       <td>${escapeHtml(account.validation || "—")}</td>
-      <td><a class="account-action" href="${url}">Priorizar →</a></td>
+      <td><a class="account-action" href="${prioritizeUrl(account)}">Priorizar →</a></td>
     </tr>`;
   }).join("");
 }
 
 function render() {
+  renderMission();
   renderSummary();
+  renderCards();
   renderTable();
   status.textContent = accounts.length
     ? `${accounts.length} conta(s) disponíveis neste navegador.`
@@ -187,7 +245,7 @@ fileInput.addEventListener("change", async () => {
     saveAccounts();
     filters.reset();
     render();
-    status.textContent = `${accounts.length} conta(s) importadas e salvas localmente neste navegador.`;
+    status.textContent = `${accounts.length} conta(s) importadas. Sua próxima missão é escolher uma conta e priorizar.`;
   } catch (error) {
     status.textContent = `Não foi possível importar: ${error.message}`;
   } finally {
@@ -202,7 +260,13 @@ clearButton.addEventListener("click", () => {
   render();
 });
 
-filters.addEventListener("input", renderTable);
-filters.addEventListener("change", renderTable);
+filters.addEventListener("input", () => {
+  renderCards();
+  renderTable();
+});
+filters.addEventListener("change", () => {
+  renderCards();
+  renderTable();
+});
 
 render();
