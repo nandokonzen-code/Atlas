@@ -122,6 +122,10 @@ function renderBreakdown(result) {
   }).join("");
 }
 
+function discoveryLink(prospect) {
+  return `index.html?prospect=${encodeURIComponent(prospect)}#discovery-builder`;
+}
+
 function renderResult(result) {
   const scored = result.eligible;
   resultPanel.className = `result-panel result-${scored ? result.band.toLowerCase() : "blocked"}`;
@@ -160,6 +164,7 @@ function renderResult(result) {
     <p class="review-note">${result.automaticContactAllowed
       ? "Resultado pronto para revisão humana antes da ação externa."
       : "Contato automático bloqueado. É necessária revisão humana."}</p>
+    ${scored ? `<div style="margin-top:16px"><a class="primary-button" style="display:inline-block;text-decoration:none" href="${discoveryLink(result.prospect)}">Próxima missão: preparar Discovery →</a></div>` : `<div style="margin-top:16px"><a class="secondary-link" style="display:inline-block;text-decoration:none" href="contas.html">Voltar para a Carteira →</a></div>`}
   `;
   resultPanel.scrollIntoView({ behavior: "smooth", block: "start" });
 }
