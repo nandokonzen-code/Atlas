@@ -3,18 +3,21 @@ import { generateDiscoveryGuide } from "./src/discovery.js";
 const form = document.querySelector("#discovery-form");
 const result = document.querySelector("#discovery-result");
 const demoButton = document.querySelector("#load-discovery-demo");
+const discoveryTitle = document.querySelector("#discovery-title");
+
+if (demoButton) demoButton.textContent = "Carregar exemplo fictício";
 
 const demo = {
-  prospect: "Grupo Herval — cenário sintético",
+  prospect: "Empresa Exemplo — cenário fictício",
   segment: "Cenário demonstrativo",
   region: "RS",
   accountType: "",
   meetingObjective: "demonstrar como estruturar uma conversa consultiva a partir de um cenário hipotético, sem usar dados comerciais internos",
-  trigger: "cenário sintético de expansão operacional",
-  fact1: "Exemplo sintético: a organização anunciou uma expansão operacional para fins desta demonstração.",
-  source1: "Dados sintéticos de demonstração — não representam fato sobre a empresa",
-  fact2: "Exemplo sintético: a operação passou a exigir revisão de prioridades e interdependências.",
-  source2: "Dados sintéticos de demonstração — não representam fato sobre a empresa",
+  trigger: "cenário fictício de expansão operacional",
+  fact1: "Exemplo fictício: a organização anunciou uma expansão operacional para fins desta demonstração.",
+  source1: "Dados fictícios de demonstração — não representam fato sobre empresa real",
+  fact2: "Exemplo fictício: a operação passou a exigir revisão de prioridades e interdependências.",
+  source2: "Dados fictícios de demonstração — não representam fato sobre empresa real",
   hypothesis1: "Em um cenário de expansão, novas exposições operacionais e requisitos de continuidade poderiam precisar de validação.",
   hypothesis2: "Mudanças de escala poderiam aumentar interdependências logísticas e operacionais.",
   hypothesis3: "A arquitetura de proteção poderia precisar ser reavaliada caso o perfil operacional mudasse materialmente.",
@@ -174,18 +177,38 @@ form.addEventListener("submit", (event) => {
   renderGuide(generateDiscoveryGuide(readForm()));
 });
 
-demoButton.addEventListener("click", () => {
-  setForm(demo);
-  renderGuide(generateDiscoveryGuide(readForm()));
-});
+if (demoButton) {
+  demoButton.addEventListener("click", () => {
+    form.reset();
+    result.hidden = true;
+    setForm(demo);
+    if (discoveryTitle) discoveryTitle.textContent = "Preparar roteiro de reunião — exemplo fictício";
+    renderGuide(generateDiscoveryGuide(readForm()));
+  });
+}
 
 const params = new URLSearchParams(window.location.search);
 const prospect = params.get("prospect");
+
 if (prospect) {
+  form.reset();
+  result.hidden = true;
   setForm({
     prospect,
     segment: params.get("segment") || "",
     region: params.get("region") || "",
     accountType: params.get("accountType") || "",
+    meetingObjective: "",
+    trigger: "",
+    fact1: "",
+    source1: "",
+    fact2: "",
+    source2: "",
+    hypothesis1: "",
+    hypothesis2: "",
+    hypothesis3: "",
+    desiredNextCommitment: "",
+    sourcePolicyAccepted: false,
   });
+  if (discoveryTitle) discoveryTitle.textContent = `Preparar Discovery — ${prospect}`;
 }
